@@ -1,0 +1,40 @@
+<scroll-view style="height:100%" scroll-y="true" bindscrolltolower="bindscrolltolower" bounces="true">
+  <!--广告-->
+  <swiper style="height:376rpx" indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true"
+    catchtap="onSwiperTap">
+      <swiper-item wx:for="{{adArr}}" wx:key="image">
+        <image class="goods_img" src="{{item.image}}" data-id="{{item.goodsId}}"></image>
+      </swiper-item>
+  </swiper>
+  <!-- 分类 -->
+  <van-grid clickable="true" column-num="4" border="{{ false }}">
+    <van-grid-item use-slot wx:for="{{categoryArr}}" wx:for-item="item" wx:for-index="i" wx:if="{{i < 4}}"
+      wx:key="category">
+      <!-- link-type="navigateTo" url="{{item.goodsId}}"  -->
+      <image style="width: 100rpx; height: 100rpx;" src="{{item.image}}"></image>
+      <text>{{item.mallCategoryName}}</text>
+    </van-grid-item>
+  </van-grid>
+  <view style="height:20rpx"></view>
+  <image style="width:100%; height:70rpx" src="{{callImgDic.PICTURE_ADDRESS}}"></image>
+  <image style="width:100%; height:240rpx" src="{{shopInfoDic.leaderImage}}"></image>
+  <view>
+    <image class="saoma_img" src="{{saomaDic.PICTURE_ADDRESS}}"></image>
+    <image class="saoma_img" src="{{integralMallPicDic.PICTURE_ADDRESS}}"></image>
+    <image class="saoma_img" src="{{newUserDic.PICTURE_ADDRESS}}"></image>
+  </view>
+  <view class="recommendTitleBg">
+    <view class="recommendTitle">商品推荐</view>
+  </view>
+  
+  <scroll-view class="recommendScroll-x" scroll-x="true" bounces="true"> 
+    <view class="recommendItem" wx:for="{{recommendArr}}" wx:key="recommend">
+      <view class="recommendItemContent">
+        <image style="height:240rpx;width:240rpx" src="{{item.image}}"></image>
+        <text class="recommendItemPrice">{{"￥"+ item.mallPrice}}</text>
+        <text class="recommendItemOriPrice">{{"￥"+ item.price}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+</scroll-view>

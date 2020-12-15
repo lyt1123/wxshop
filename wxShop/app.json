@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/category/category",
+    "pages/cart/cart",
+    "pages/mine/mine"
+  ],
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#479eff",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "image/tabbar_home_nor.png",
+        "selectedIconPath": "image/tabbar_home_sel.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "分类",
+        "iconPath": "image/tabbar_category_nor.png",
+        "selectedIconPath": "image/tabbar_category_sel.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "image/tabbar_cart_nor.png",
+        "selectedIconPath": "image/tabbar_cart_sel.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "image/tabbar_mine_nor.png",
+        "selectedIconPath": "image/tabbar_mine_sel.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 1000,
+    "downloadFile": 1000
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}
