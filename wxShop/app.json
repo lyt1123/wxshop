@@ -7,7 +7,7 @@
   ],
   "tabBar": {
     "color": "#999999",
-    "selectedColor": "#479eff",
+    "selectedColor": "#E43A72",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
@@ -42,10 +42,9 @@
     "downloadFile": 1000
   },
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#E43A72",
+    "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json"
 }

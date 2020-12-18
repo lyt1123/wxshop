@@ -57,6 +57,96 @@ page{
 .recommendItemOriPrice{
   color: gainsboro;
   font-size: 26rpx;
+  text-decoration:line-through;
+}
+
+.floorTitleImg{
+  height:200rpx;
+  width:100%
+}
+
+.floorBgView{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.floorLeftBgView{
+  width: 375rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.floorImgBig{
+  width: 375rpx;
+  height: 360rpx;
+}
+
+.floorImgSmall{
+  width: 375rpx;
+  height: 180rpx;
+}
+
+.hotTitle{
+  padding-top: 20rpx;
+  padding-bottom: 10rpx;
+  width: 100%;
+  text-align: center;
+}
+
+.hotContentBg{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hotItemBg{
+  width: 375rpx;
+  height: 500rpx;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.hotItemImg{
+  width: 375rpx;
+  height: 380rpx;
+}
+
+.hotItemTitle{
+  padding-left: 10rpx;
+  padding-top: 10rpx;
+  padding-right: 10rpx;
+  color: #E43A72;
+  font-size: 35rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.hotPriceBg{
+  width: 375rpx;
+  height: 40rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.hotItemPrice{
+  padding-left: 10rpx;
+  font-size: 35rpx;
+}
+
+.hotItemOriPrice{
+  padding-left: 50rpx;
+  font-size: 35rpx;
+  color: gainsboro;
+  text-decoration:line-through;
 }
 
 

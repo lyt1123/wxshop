@@ -1,9 +1,8 @@
 {
   "navigationBarTitleText": "首页",
-  "navigationBarBackgroundColor": "#E43A72",
-  "navigationBarTextStyle": "white",
   "usingComponents": {
     "van-grid": "@vant/weapp/grid/index",
     "van-grid-item": "@vant/weapp/grid-item/index"
-  }
+  },
+  "enablePullDownRefresh": true
 }
