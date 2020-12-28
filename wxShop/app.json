@@ -1,13 +1,13 @@
 {
   "pages": [
-    "pages/home/home",
     "pages/category/category",
+    "pages/home/home",
     "pages/cart/cart",
     "pages/mine/mine"
   ],
   "tabBar": {
     "color": "#999999",
-    "selectedColor": "#E43A72",
+    "selectedColor": "#d74293",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
@@ -43,7 +43,7 @@
   },
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#E43A72",
+    "navigationBarBackgroundColor": "#d74293",
     "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json"

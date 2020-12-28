@@ -15,8 +15,9 @@ Page({
     floor2ImgArr: [],
     floor3TitleImg: {},
     floor3ImgArr: [],
-    currentPage : 1,
+    currentPage: 1,
     goodsArr: [],
+    canLoadMoreData: true,
   },
   onLoad: function (options) {
     this.dataRequest();
@@ -31,7 +32,6 @@ Page({
         'lon': '115.02932',
         'lat': '35.76189'
       },
-      method: "POST",
       success: function (res) {
         that.setData({
           adArr: res.data.data.slides,
@@ -54,6 +54,12 @@ Page({
   },
 
   goodsRequest: function (page) {
+    if (this.data.canLoadMoreData == false){
+      wx.showToast({
+        title: '没有更多数据了',
+      })
+      return;
+    }
     var that = this;
     wx.showToast({
       title: '数据加载中',
@@ -71,21 +77,16 @@ Page({
       data: {
         'page': page,
       },
-      method: 'POST',
       success: function (res) {
-        //结束下拉刷新
         wx.stopPullDownRefresh();
-        //结束加载框
         wx.hideToast();
-
-        that.setData({
-          goodsArr: that.data.goodsArr.concat(res.data.data),
-        })
-
-        if (res.data.data.length > 0) {
+        if (res.data.data != null && res.data.data.length > 0) {
           that.setData({
-            currentPage: page
+            currentPage: page,
+            goodsArr: that.data.goodsArr.concat(res.data.data),
           })
+        }else{
+          that.data.canLoadMoreData = false;
         }
       },
     })
@@ -93,18 +94,18 @@ Page({
 
   //列表滑动到最底部
   bindscrolltolower: function () {
-    console.log('加载更多加载更多加载更多加载更多加载更多加载更多加载更多加载更多')
-    this.goodsRequest(this.currentPage + 1);
+    this.goodsRequest(this.data.currentPage + 1);
   },
 
   //下拉刷新
   onPullDownRefresh: function () {
+    this.data.canLoadMoreData = true;
     this.dataRequest();
     this.goodsRequest(1);
   },
 
   onSwiperTap: function (event) {
-    var id = event.target.dataset.id;
+    var id = event.target.dataset.index;
     console.log(id);
     // wx.navigateTo({});
   },

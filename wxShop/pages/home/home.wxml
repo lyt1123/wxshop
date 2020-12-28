@@ -1,4 +1,4 @@
-<scroll-view style="height:100%" scroll-y="true" bindscrolltolower="bindscrolltolower" lower-threshold="100">
+<scroll-view style="height:100%" scroll-y="true" bindscrolltolower="bindscrolltolower">
   <!--广告-->
   <swiper style="height:376rpx" indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true">
     <swiper-item wx:for="{{adArr}}" wx:key="image" catchtap="onSwiperTap">
@@ -7,7 +7,7 @@
   </swiper>
   <!-- 分类 -->
   <van-grid clickable="true" column-num="4" border="{{false}}">
-    <van-grid-item use-slot wx:for="{{categoryArr}}" wx:for-item="item" wx:for-index="i" wx:if="{{i < 4}}"
+    <van-grid-item use-slot wx:for="{{categoryArr}}"  wx:if="{{index< 4}}"
       wx:key="category">
       <!-- link-type="navigateTo" url="{{item.goodsId}}"  -->
       <image style="width: 100rpx; height: 100rpx;" src="{{item.image}}"></image>

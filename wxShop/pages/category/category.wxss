@@ -1,0 +1,134 @@
+page{
+  height: 100%;
+  background-color:white;
+}
+
+.container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.leftNavigatorView{
+  width: 180rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-right-width: 1rpx;
+  border-right-color: darkgray;
+  border-right-style: solid;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+  display: none;
+}
+
+.leftNavigatorItem{
+  width: 180rpx;
+  height: 110rpx;
+  line-height: 110rpx;
+  border-bottom-width: 0.5rpx;
+  border-bottom-color: darkgray;
+  border-bottom-style: solid;
+  text-align: center;
+  color: #4c4c4c;
+  background-color: white;
+}
+
+.select{
+  background-color: lightgray;
+}
+
+.rightBgView{
+  width: 570rpx;
+  height: 100%;
+}
+
+.topNavigatorView{
+  height: 100rpx;
+  background-color: white;
+  border-bottom-width: 0.5rpx;
+  border-bottom-color: darkgray;
+  border-bottom-style: solid;
+  white-space: nowrap;
+}
+
+.topNavigatorItem{
+  margin: 0 25rpx;
+  width: auto;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  color: #4c4c4c;
+  display:inline-block;
+}
+
+.topNavigtorItemSelect{
+  color: #d74293;
+}
+
+.goodsScrollView{
+  width: 570rpx;
+  height: 100%;
+  background-color: white;
+}
+
+.goodsContentView{
+  width: 570rpx;
+  height: 100% ;
+  background-color: white;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.goodsItem{
+  padding: 20rpx 10rpx;
+  width: 265rpx;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.goodsItemImg{
+  width: 265rpx;
+  height: 265rpx;
+}
+
+.goodsItemName{
+  margin-top: 10rpx;
+  width: 265rpx;
+  color: #d74293;
+  font-size: 35rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.goodsPriceView{
+  margin-bottom: 20rpx;
+  width: 265rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  display: flex;
+}
+
+.goodsItemPrice{
+  color: #4c4c4c;
+  font-size: 30rpx;
+}
+
+.goodsItemOriPrice{
+  margin-left: 10rpx;
+  color: gray;
+  font-size: 30rpx;
+  text-decoration: line-through;
+}
+
+
