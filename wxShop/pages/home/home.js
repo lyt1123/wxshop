@@ -93,7 +93,7 @@ Page({
   },
 
   //列表滑动到最底部
-  bindscrolltolower: function () {
+  onReachBottom: function () {
     this.goodsRequest(this.data.currentPage + 1);
   },
 

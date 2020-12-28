@@ -1,0 +1,5 @@
+<view class="cartBgView">
+  <view class="view" wx:for="{{temArr}}">{{index}}</view>
+</view>
+
+<view class="bottomView">123412341234123412</view>

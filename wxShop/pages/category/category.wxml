@@ -1,37 +1,32 @@
-<view class="container">
-  <!-- 左侧导航 -->
-  <scroll-view class="leftNavigatorView" scroll-y="true" enable-flex="true">
-    <block wx:for="{{leftNavArr}}" wx:key="leftNavArr">
-      <view class="leftNavigatorItem {{leftNavSelIndex==index?'select':''}}" data-index="{{index}}"
-        bindtap="leftNavTap">
-        {{item.mallCategoryName}}</view>
-    </block>
-  </scroll-view>
-  <!-- 右侧 -->
-  <view class="rightBgView">
-    <!-- 小导航 -->
-    <scroll-view class="topNavigatorView" scroll-x="true">
-      <block wx:for="{{topNavArr}}" wx:key="topNavArr">
-        <view class="topNavigatorItem {{topNavSelIndex==index?'topNavigtorItemSelect':''}}" data-index="{{index}}"
-          bindtap="topNavTap">{{item.mallSubName}}</view>
-      </block>
-    </scroll-view>
+<!-- 左侧导航 -->
+<scroll-view class="leftNavigatorView" scroll-y="true">
+  <block wx:for="{{leftNavArr}}" wx:key="leftNavArr">
+    <view class="leftNavigatorItem {{leftNavSelIndex==index?'select':''}}" data-index="{{index}}" bindtap="leftNavTap">
+      {{item.mallCategoryName}}</view>
+  </block>
+</scroll-view>
 
-    <!-- 分类商品 -->
-    <scroll-view class="goodsScrollView" style="height:{{goodsScrollHeight}}px" scroll-y="true" bindscrolltolower="bindscrolltolower">
-      <view class="goodsContentView" style="height:{{goodsScrollHeight}}px">
-        <block wx:for="{{navGoodsArr}}" wx:key="navGoodsArr">
-          <view class="goodsItem" data-index="{{index}}" bindtap="goodsItemTap">
-            <image class="goodsItemImg" src="{{item.image}}"></image>
-            <view class="goodsItemName">{{item.goodsName}}</view>
-            <view class="goodsPriceView">
-              <view class="goodsItemPrice">{{"￥" +item.presentPrice}}</view>
-              <view class="goodsItemOriPrice">{{"￥" +item.oriPrice}}</view>
-            </view>
-          </view>
-        </block>
+<!-- 小导航 -->
+<scroll-view class="topNavigatorView" scroll-x="true">
+  <block wx:for="{{topNavArr}}" wx:key="topNavArr">
+    <view class="topNavigatorItem {{topNavSelIndex==index?'topNavigtorItemSelect':''}}" data-index="{{index}}"
+      bindtap="topNavTap">{{item.mallSubName}}</view>
+  </block>
+</scroll-view>
+
+<!-- 分类商品 -->
+<scroll-view class="goodsScrollView" scroll-y="true" bindscrolltolower="bindscrolltolower">
+  <view style="height:100rpx"></view>
+  <view class="goodsContentView">
+    <block wx:for="{{navGoodsArr}}" wx:key="navGoodsArr">
+      <view class="goodsItem" data-index="{{index}}" bindtap="goodsItemTap">
+        <image class="goodsItemImg" src="{{item.image}}"></image>
+        <view class="goodsItemName">{{item.goodsName}}</view>
+        <view class="goodsPriceView">
+          <view class="goodsItemPrice">{{"￥" +item.presentPrice}}</view>
+          <view class="goodsItemOriPrice">{{"￥" +item.oriPrice}}</view>
+        </view>
       </view>
-    </scroll-view>
+    </block>
   </view>
-
-</view>
+</scroll-view>
