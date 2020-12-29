@@ -5,24 +5,124 @@ page{
 
 .cartBgView{
   width: 100%;
-  height: auto;
-  padding-bottom: 100rpx;
-  background-color: red;
+  height: 100%;
+  padding-bottom: 130rpx;
+  box-sizing: border-box;
+  background-color: f2f2f2;
 }
 
-.view{
-  width: 200rpx;
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+  display: none;
+}
+
+.cartItem{
+  width: 100%;
   height: 200rpx;
-  border-color: #ffff00;
-  border-width: 4rpx;
-  border-style: solid;
+  border-bottom: 0.5rpx solid darkgray;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+
+.cartItemGoodsImg{
+  width: 160rpx;
+  height:160rpx;
+  margin-left:10rpx;
+  background-color:gray
+}
+
+.cartItemNameView{
+  max-width: 280rpx;
+  height: 160rpx;
+  margin-left: 10rpx;
+  display: flex;
+  flex-direction: column;
+  background-color: wheat;
+  justify-content: space-between;
+}
+
+.cartItemGoodsName{
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.cartItemPriceView{
+  max-width: 200rpx;
+  height: 160rpx;
+  right: 10rpx;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background-color: turquoise;
+  align-items: flex-end;
+}
+
+.cartItemGoodsPrice{
+  font-size: 28rpx;
+  color: #4c4c4c;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.cartItemGoodsOriPrice{
+  color: darkgray;
+  text-decoration: line-through;
 }
 
 .bottomView{
   width: 100%;
-  height: 100rpx;
-  background-color: blue;
+  height: 130rpx;
+  background-color: white;
   position: fixed;
   bottom: 0;
   z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
+
+.allSelectView{
+  width: auto;
+  height: 50rpx;
+  display: flex;
+  position: absolute;
+  left: 30rpx;
+}
+
+.allPriceView{
+  width: auto;
+  height: 130rpx;
+  margin-right: 30rpx;
+  margin-left: 180rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.settleView{
+  width: auto;
+  height: 100rpx;
+  padding: 0 20rpx;
+  margin-right: 30rpx;
+  background-color: #d74293;
+  line-height: 100rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  color: white;
+}
+
+
+
+

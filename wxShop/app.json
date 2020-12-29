@@ -3,7 +3,8 @@
     "pages/cart/cart",
     "pages/home/home",
     "pages/category/category",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/home/goodsDetail/goodsDetail"
   ],
   "tabBar": {
     "color": "#999999",

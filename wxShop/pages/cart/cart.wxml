@@ -1,5 +1,37 @@
-<view class="cartBgView">
-  <view class="view" wx:for="{{temArr}}">{{index}}</view>
-</view>
+<scroll-view class="cartBgView" scroll-y="true" catchtouchmove="return">
+  <!-- 占位 -->
+  <view style="height:20rpx;border-bottom: 0.5rpx solid darkgray;background-color:white"></view>
+  <!-- 商品列表 -->
+  <view class="cartItem" wx:for="{{cartList}}" wx:key="cartList" >
+    <radio style="margin-left:30rpx" color="#d74293" bindtap="selectTap" data-index="{{index}}"></radio>
+    <image class="cartItemGoodsImg" src=""></image>
+    <view class="cartItemNameView">
+      <view class="cartItemGoodsName">商品名称啊啊啊啊啊啊啊啊啊想吃V字形从v</view>
+      <view>数量数</view>
+    </view>
+    <view class="cartItemPriceView">
+      <view class="cartItemGoodsPrice">￥ 299.00</view>
+      <view class="cartItemGoodsOriPrice">￥ 300.00</view>
+      <view>删除</view>
+    </view>
+  </view>
+</scroll-view>
 
-<view class="bottomView">123412341234123412</view>
+<!-- 底部 -->
+<view class="bottomView">
+  <!-- 全选 -->
+  <view class="allSelectView" bindtap="allSelectTap">
+    <radio color="#d74293" checked="{{allSelect?true:false}}"></radio>
+    <view style="height:50rpx;margin-left:10rpx;line-height:50rpx;font-size:30rpx">全部</view>
+  </view>
+  <!-- 总价 -->
+  <view class="allPriceView">
+    <view class="totalPriceView" style="display:flex">
+      <view>合计：</view>
+      <view style="color:#d74293;text-align: right;">￥ 298.00</view>
+    </view>
+    <view style="font-size:20rpx;text-align: right;">满68免配送费，预购免配送费</view>
+  </view>
+  <!-- 结算按钮 -->
+  <view class="settleView">结算(1)</view>
+</view>
