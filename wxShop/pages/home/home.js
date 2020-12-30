@@ -1,20 +1,7 @@
 var api = require('../../utils/api');
 Page({
   data: {
-    adArr: [],
-    categoryArr: [],
-    callImgDic: {},
-    shopInfoDic: {},
-    saomaDic: {},
-    integralMallPicDic: {},
-    newUserDic: {},
-    recommendArr: [],
-    floor1TitleImg: {},
-    floor1ImgArr: [],
-    floor2TitleImg: {},
-    floor2ImgArr: [],
-    floor3TitleImg: {},
-    floor3ImgArr: [],
+    homeData:{},
     currentPage: 1,
     goodsArr: [],
     canLoadMoreData: true,
@@ -34,27 +21,14 @@ Page({
       },
       success: function (res) {
         that.setData({
-          adArr: res.data.data.slides,
-          categoryArr: res.data.data.category,
-          callImgDic: res.data.data.advertesPicture,
-          shopInfoDic: res.data.data.shopInfo,
-          saomaDic: res.data.data.saoma,
-          integralMallPicDic: res.data.data.integralMallPic,
-          newUserDic: res.data.data.newUser,
-          recommendArr: res.data.data.recommend,
-          floor1TitleImg: res.data.data.floor1Pic,
-          floor1ImgArr: res.data.data.floor1,
-          floor2TitleImg: res.data.data.floor2Pic,
-          floor2ImgArr: res.data.data.floor2,
-          floor3TitleImg: res.data.data.floor3Pic,
-          floor3ImgArr: res.data.data.floor3,
+          homeData: res.data.data,
         })
       }
     })
   },
 
   goodsRequest: function (page) {
-    if (this.data.canLoadMoreData == false){
+    if (!this.data.canLoadMoreData){
       wx.showToast({
         title: '没有更多数据了',
       })
@@ -65,13 +39,9 @@ Page({
       title: '数据加载中',
       icon: "loading",
     })
-
     if (page == 1) {
-      this.setData({
-        goodsArr: [],
-      })
+      this.data.goodsArr = [];
     }
-
     api.request({
       url: 'homePageBelowConten',
       data: {
@@ -105,10 +75,37 @@ Page({
   },
 
   onSwiperTap: function (event) {
-    var id = event.target.dataset.index;
-    console.log(id);
-    // wx.navigateTo({});
+    let id = event.target.dataset.id;
+    this.gotoGoodsDetail(id)
   },
+
+  saomaTap: function(){
+
+  },
+
+  integralMallTap: function(){
+
+  },
+
+  newUserTap: function(){
+
+  },
+
+  onRecommendTap: function(e){
+    let goodsId = e.currentTarget.dataset.id;
+    this.gotoGoodsDetail(goodsId);
+  },
+
+  gotoGoodsDetail:function(goodsId){
+    if (!goodsId) {return;}
+    wx.navigateTo({
+      url: 'goodsDetail/goodsDetail?goodsId='+goodsId,
+      // success:function(res){
+      //   res.eventChannel.emit('goodsId',{data: goodsId});
+      // }  
+    })
+  },
+
   onShareAppMessage() {
     return {
       title: '首页',

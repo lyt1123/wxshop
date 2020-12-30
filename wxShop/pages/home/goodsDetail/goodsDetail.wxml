@@ -1,2 +1,3 @@
-<!--pages/home/goodsDetail/goodsDetail.wxml-->
-<text>pages/home/goodsDetail/goodsDetail.wxml</text>
+<scroll-view style="width:100%;height:100%" scroll-y="true">
+  <image style="width:100%;height:700rpx" src="{{goodsData.goodInfo.image1}}"></image>
+</scroll-view>

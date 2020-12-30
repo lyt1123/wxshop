@@ -12,7 +12,6 @@ Page({
   },
   onLoad: function () {
     this.requestLeftNav();
-    this.getHeight();
   },
 
   requestLeftNav: function () {
@@ -97,17 +96,17 @@ Page({
     console.log(index);
   },
 
-  getHeight: function() { 
-    const that = this; 
-    const windowHeight = wx.getSystemInfoSync().windowHeight
-    wx.getSystemInfo({ 
-      success: function(res) { 
-        wx.createSelectorQuery().select('.topNavigatorView').boundingClientRect(function(rect) { 
-          that.setData({ 
-            goodsScrollHeight: windowHeight - rect.height 
-          }) 
-        }).exec() 
-      }, 
-    }) 
-  },
+  // getHeight: function() { 
+  //   const that = this; 
+  //   const windowHeight = wx.getSystemInfoSync().windowHeight
+  //   wx.getSystemInfo({ 
+  //     success: function(res) { 
+  //       wx.createSelectorQuery().select('.topNavigatorView').boundingClientRect(function(rect) { 
+  //         that.setData({ 
+  //           goodsScrollHeight: windowHeight - rect.height 
+  //         }) 
+  //       }).exec() 
+  //     }, 
+  //   }) 
+  // },
 })

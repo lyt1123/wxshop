@@ -1,13 +1,13 @@
 <view style="width:100%,height:auto">
   <!--广告-->
   <swiper style="height:376rpx" indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true">
-    <swiper-item wx:for="{{adArr}}" wx:key="image" catchtap="onSwiperTap">
+    <swiper-item wx:for="{{homeData.slides}}" wx:key="image" bindtap="onSwiperTap">
       <image class="goods_img" src="{{item.image}}" data-id="{{item.goodsId}}"></image>
     </swiper-item>
   </swiper>
   <!-- 分类 -->
   <van-grid clickable="true" column-num="4" border="{{false}}">
-    <van-grid-item use-slot wx:for="{{categoryArr}}"  wx:if="{{index< 4}}"
+    <van-grid-item use-slot wx:for="{{homeData.category}}"  wx:if="{{index< 4}}"
       wx:key="category">
       <!-- link-type="navigateTo" url="{{item.goodsId}}"  -->
       <image style="width: 100rpx; height: 100rpx;" src="{{item.image}}"></image>
@@ -17,15 +17,15 @@
   <!-- 空行 -->
   <view style="height:20rpx"></view>
   <!--客服电话 -->
-  <image style="width:100%; height:70rpx" src="{{callImgDic.PICTURE_ADDRESS}}"></image>
+  <image style="width:100%; height:70rpx" src="{{homeData.advertesPicture.PICTURE_ADDRESS}}"></image>
   <!-- 地址 -->
-  <image style="width:100%; height:240rpx" src="{{shopInfoDic.leaderImage}}"></image>
+  <image style="width:100%; height:240rpx" src="{{homeData.shopInfo.leaderImage}}"></image>
 
   <!-- 秒杀 -->
   <view>
-    <image class="saoma_img" src="{{saomaDic.PICTURE_ADDRESS}}"></image>
-    <image class="saoma_img" src="{{integralMallPicDic.PICTURE_ADDRESS}}"></image>
-    <image class="saoma_img" src="{{newUserDic.PICTURE_ADDRESS}}"></image>
+    <image class="saoma_img" src="{{homeData.saoma.PICTURE_ADDRESS}}" bindtap="saomaTap"></image>
+    <image class="saoma_img" src="{{homeData.integralMallPic.PICTURE_ADDRESS}}" bindtap="integralMallTap"></image>
+    <image class="saoma_img" src="{{homeData.newUser.PICTURE_ADDRESS}}" bindtap="newUserTap"></image>
   </view>
 
   <!-- 推荐title -->
@@ -35,8 +35,8 @@
 
   <!-- 商品推荐 -->
   <scroll-view class="recommendScroll-x" scroll-x="true" bounces="true">
-    <view class="recommendItem" wx:for="{{recommendArr}}" wx:key="recommend">
-      <view class="recommendItemContent">
+    <view class="recommendItem" wx:for="{{homeData.recommend}}" wx:key="recommend">
+      <view class="recommendItemContent" data-id="{{item.goodsId}}" bindtap="onRecommendTap">
         <image style="height:240rpx;width:240rpx" src="{{item.image}}"></image>
         <text class="recommendItemPrice">{{"￥"+ item.mallPrice}}</text>
         <text class="recommendItemOriPrice">{{"￥"+ item.price}}</text>
@@ -45,37 +45,37 @@
   </scroll-view>
 
   <!-- 楼层一 -->
-  <image class="floorTitleImg" src="{{floor1TitleImg.PICTURE_ADDRESS}}"></image>
+  <image class="floorTitleImg" src="{{homeData.floor1Pic.PICTURE_ADDRESS}}"></image>
   <view class="floorBgView">
-    <image class="floorImgBig" src="{{floor1ImgArr[0].image}}"></image>
+    <image class="floorImgBig" src="{{homeData.floor1[0].image}}"></image>
     <view class="floorLeftBgView">
-      <image class="floorImgSmall" src="{{floor1ImgArr[1].image}}"></image>
-      <image class="floorImgSmall" src="{{floor1ImgArr[2].image}}"></image>
+      <image class="floorImgSmall" src="{{homeData.floor1[1].image}}"></image>
+      <image class="floorImgSmall" src="{{homeData.floor1[2].image}}"></image>
     </view>
-    <image class="floorImgSmall" src="{{floor1ImgArr[3].image}}"></image>
-    <image class="floorImgSmall" src="{{floor1ImgArr[4].image}}"></image>
+    <image class="floorImgSmall" src="{{homeData.floor1[3].image}}"></image>
+    <image class="floorImgSmall" src="{{homeData.floor1[4].image}}"></image>
   </view>
   <!-- 楼层二 -->
-  <image class="floorTitleImg" src="{{floor2TitleImg.PICTURE_ADDRESS}}"></image>
+  <image class="floorTitleImg" src="{{homeData.floor2Pic.PICTURE_ADDRESS}}"></image>
   <view class="floorBgView">
-    <image class="floorImgBig" src="{{floor2ImgArr[0].image}}"></image>
+    <image class="floorImgBig" src="{{homeData.floor2[0].image}}"></image>
     <view class="floorLeftBgView">
-      <image class="floorImgSmall" src="{{floor2ImgArr[1].image}}"></image>
-      <image class="floorImgSmall" src="{{floor2ImgArr[2].image}}"></image>
+      <image class="floorImgSmall" src="{{homeData.floor2[1].image}}"></image>
+      <image class="floorImgSmall" src="{{homeData.floor2[2].image}}"></image>
     </view>
-    <image class="floorImgSmall" src="{{floor2ImgArr[3].image}}"></image>
-    <image class="floorImgSmall" src="{{floor2ImgArr[4].image}}"></image>
+    <image class="floorImgSmall" src="{{homeData.floor2[3].image}}"></image>
+    <image class="floorImgSmall" src="{{homeData.floor2[4].image}}"></image>
   </view>
   <!-- 楼层三 -->
-  <image class="floorTitleImg" src="{{floor3TitleImg.PICTURE_ADDRESS}}"></image>
+  <image class="floorTitleImg" src="{{homeData.floor3Pic.PICTURE_ADDRESS}}"></image>
   <view class="floorBgView">
-    <image class="floorImgBig" src="{{floor3ImgArr[0].image}}"></image>
+    <image class="floorImgBig" src="{{homeData.floor3[0].image}}"></image>
     <view class="floorLeftBgView">
-      <image class="floorImgSmall" src="{{floor3ImgArr[1].image}}"></image>
-      <image class="floorImgSmall" src="{{floor3ImgArr[2].image}}"></image>
+      <image class="floorImgSmall" src="{{homeData.floor3[1].image}}"></image>
+      <image class="floorImgSmall" src="{{homeData.floor3[2].image}}"></image>
     </view>
-    <image class="floorImgSmall" src="{{floor3ImgArr[3].image}}"></image>
-    <image class="floorImgSmall" src="{{floor3ImgArr[4].image}}"></image>
+    <image class="floorImgSmall" src="{{homeData.floor3[3].image}}"></image>
+    <image class="floorImgSmall" src="{{homeData.floor3[4].image}}"></image>
   </view>
   <!-- 火爆title -->
   <view class="hotTitle">
@@ -84,7 +84,7 @@
   </view>
 
   <view class="hotContentBg">
-    <view class="hotItemBg" wx:for="{{goodsArr}}" wx:key="goods" data-index="{{index}}" catchtap="goodsClickTap">
+    <view class="hotItemBg" wx:for="{{goodsArr}}" wx:key="goods" homeData-index="{{index}}" catchtap="goodsClickTap">
       <image class="hotItemImg" src="{{item.image}}"></image>
       <text class="hotItemTitle">{{item.name}}</text>
       <view class="hotPriceBg">
