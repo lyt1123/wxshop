@@ -1,4 +1,4 @@
-var api = require('../../utils/api');
+import { promiseRequest } from '../../utils/api';
 Page({
   data: {
     leftNavArr: [],
@@ -19,14 +19,14 @@ Page({
       title: '数据加载中',
       icon: "loading",
     })
-    api.promiseRequest({
+    promiseRequest({
       url: 'getCategory',
     }).then(res => {
       wx.hideToast();
       let tempArr = [{'mallSubId':'','mallSubName':'全部'}];
       this.setData({
-        leftNavArr: res.data,
-        topNavArr: tempArr.concat(res.data[0].bxMallSubDto),
+        leftNavArr: res,
+        topNavArr: tempArr.concat(res[0].bxMallSubDto),
       })
       this.requestNavGoods(1);
     })
@@ -68,7 +68,7 @@ Page({
     }
     let categoryId = this.data.leftNavArr[this.data.leftNavSelIndex].mallCategoryId;
     let categorySubId = this.data.topNavArr[this.data.topNavSelIndex].mallSubId;
-    api.promiseRequest({
+    promiseRequest({
       url: 'getMallGoods',
       data: {
         'categoryId': categoryId,
@@ -77,10 +77,10 @@ Page({
       }
     }).then(res => {
       wx.hideToast();
-      if (res.data != null && res.data.length > 0) {
+      if (res != null && res.length > 0) {
         this.setData({
           currentPage: page,
-          navGoodsArr: this.data.navGoodsArr.concat(res.data),
+          navGoodsArr: this.data.navGoodsArr.concat(res),
         })
       }else{
         this.data.canLoadMoreData = false;

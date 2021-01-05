@@ -1,7 +1,7 @@
-var api = require('../../utils/api');
+import api from "../../utils/api";
 Page({
   data: {
-    homeData:{},
+    homeData: {},
     currentPage: 1,
     goodsArr: [],
     canLoadMoreData: true,
@@ -13,52 +13,47 @@ Page({
 
   dataRequest: function () {
     var that = this;
-    api.request({
+    api.promiseRequest({
       url: 'homePageContent',
       data: {
         'lon': '115.02932',
         'lat': '35.76189'
       },
-      success: function (res) {
-        that.setData({
-          homeData: res.data.data,
-        })
-      }
+    }).then(res => {
+      that.setData({
+        homeData: res,
+      })
     })
   },
 
   goodsRequest: function (page) {
-    if (!this.data.canLoadMoreData){
+    if (!this.data.canLoadMoreData) {
       wx.showToast({
         title: '没有更多数据了',
       })
       return;
     }
     var that = this;
-    wx.showToast({
-      title: '数据加载中',
-      icon: "loading",
-    })
     if (page == 1) {
       this.data.goodsArr = [];
     }
-    api.request({
+
+    api.promiseRequest({
       url: 'homePageBelowConten',
       data: {
         'page': page,
       },
-      success: function (res) {
-        wx.stopPullDownRefresh();
-        wx.hideToast();
-        if (res.data.data != null && res.data.data.length > 0) {
-          that.setData({
-            currentPage: page,
-            goodsArr: that.data.goodsArr.concat(res.data.data),
-          })
-        }else{
-          that.data.canLoadMoreData = false;
-        }
-      },
+    }).then(res => {
+      wx.stopPullDownRefresh();
+      wx.hideToast();
+      if (res != null && res.length > 0) {
+        that.setData({
+          currentPage: page,
+          goodsArr: that.data.goodsArr.concat(res),
+        })
+      } else {
+        that.data.canLoadMoreData = false;
+      }
     })
   },
 
@@ -79,27 +74,35 @@ Page({
     this.gotoGoodsDetail(id)
   },
 
-  saomaTap: function(){
+  // saomaTap: function(){
 
-  },
+  // },
 
-  integralMallTap: function(){
+  // integralMallTap: function(){
 
-  },
+  // },
 
-  newUserTap: function(){
+  // newUserTap: function(){
 
-  },
+  // },
 
-  onRecommendTap: function(e){
+
+  onRecommendTap: function (e) {
     let goodsId = e.currentTarget.dataset.id;
     this.gotoGoodsDetail(goodsId);
   },
 
-  gotoGoodsDetail:function(goodsId){
-    if (!goodsId) {return;}
+  goodsClickTap: function (e) {
+    let goodsId = e.currentTarget.dataset.id;
+    this.gotoGoodsDetail(goodsId);
+  },
+
+  gotoGoodsDetail: function (goodsId) {
+    if (!goodsId) {
+      return;
+    }
     wx.navigateTo({
-      url: 'goodsDetail/goodsDetail?goodsId='+goodsId,
+      url: 'goodsDetail/goodsDetail?goodsId=' + goodsId,
       // success:function(res){
       //   res.eventChannel.emit('goodsId',{data: goodsId});
       // }  

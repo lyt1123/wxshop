@@ -84,7 +84,7 @@
   </view>
 
   <view class="hotContentBg">
-    <view class="hotItemBg" wx:for="{{goodsArr}}" wx:key="goods" homeData-index="{{index}}" catchtap="goodsClickTap">
+    <view class="hotItemBg" wx:for="{{goodsArr}}" wx:key="goods" data-id="{{item.goodsId}}" bindtap="goodsClickTap">
       <image class="hotItemImg" src="{{item.image}}"></image>
       <text class="hotItemTitle">{{item.name}}</text>
       <view class="hotPriceBg">

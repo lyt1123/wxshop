@@ -1,0 +1,46 @@
+.sendView{
+  width: 170rpx;
+  height: auto;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  padding: 10rpx 20rpx;
+  background-color: #F5FEEC;
+  border: 1rpx solid #C1EE9F;
+  color: #60CA1D;
+  font-size: 28rpx;
+}
+
+.priceView{
+  width: 100%;
+  height: auto;
+  margin-top: 20rpx;
+  padding-left: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.detailView{
+  width: 100%;
+  height: auto;
+}
+
+.commonView{
+  width: 100%;
+  height: auto;
+  border-top: 1rpx solid #E4E4E4;
+}
+
+.commonItem{
+  width: 100%;
+  height: auto;
+  border-bottom: 1rpx solid #E4E4E4;
+}
+
+.commonItemText{
+  width: 710rpx;
+  height: auto;
+  margin-top: 20rpx;
+  margin-left:20rpx;
+  margin-right: 20rpx;
+  font-size: 30rpx;
+}

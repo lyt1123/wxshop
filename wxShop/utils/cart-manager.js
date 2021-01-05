@@ -1,20 +1,15 @@
-
 const cartInfo = 'cartInfo'
 
 function getCartData(){
-  wx.getStorage({
-    key: cartInfo,
-    success(res){
-      return res.data;
-    },
-    fail(){
-      return [];
-    }
-  })
+  let cartArr = wx.getStorageSync('cartInfo');
+  if (cartArr == undefined){
+    return [];
+  }
+  return cartArr;
 }
 
 function saveCartGoods(goods){
-  var cartArr = this.getCartData();
+  var cartArr = getCartData();
   var isHave = false;
   cartArr.forEach((value,index) =>{
     if (value.goodsId == goods.goodsId){
@@ -23,8 +18,14 @@ function saveCartGoods(goods){
     }
   })
   if (!isHave){
-    cartArr.concat([goods]);
+    cartArr.push(goods);
   }
+
+  wx.setStorage({
+    data: cartArr,
+    key: cartInfo,
+  })
+  console.log(cartArr);
 }
 
 module.exports = {

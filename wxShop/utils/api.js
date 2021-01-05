@@ -1,16 +1,37 @@
 function promiseRequest(params) {
   checkParams(params);
   let promise = new Promise(function (resolve, reject) {
+    wx.showToast({
+      title: '数据加载中',
+      icon: "loading",
+    })
     wx.request({
       url: params.url,
       data: params.data,
       method: params.method,
       header: params.header,
       success: res => {
-        resolve(res.data);
+        let responds = res.data;
+        if (responds.code == 0 && responds.message == 'success'){
+          resolve(responds.data);
+        }else{
+          wx.stopPullDownRefresh();
+          console.log(res.errMsg);
+          wx.showToast({
+            title: res.errMsg?res.errMsg:'网络请求失败，稍后再试!',
+            icon: 'none',
+            duration: 2000
+          })
+        }
       },
       fail: res => {
-        reject(res.data)
+        wx.stopPullDownRefresh();
+        console.log(res.errMsg);
+        wx.showToast({
+          title: res.errMsg?res.errMsg:'网络请求失败，稍后再试!',
+          icon:'none',
+          duration: 2000
+        })
       }
     })
   })
@@ -19,6 +40,10 @@ function promiseRequest(params) {
 
 function request(params) {
   checkParams(params);
+  wx.showToast({
+    title: '数据加载中',
+    icon: "loading",
+  })
   wx.request(params);
 }
 
@@ -55,6 +80,6 @@ function checkUrl(path) {
 // const API_HOST = "";
 
 module.exports = {
-  request,
-  promiseRequest,
+  request: request,
+  promiseRequest:promiseRequest
 }

@@ -1,3 +1,14 @@
+function timeStampToDate(timeStamp) {
+  var date = new Date(timeStamp);
+  var y = date.getFullYear();
+  var m = formatNumber(date.getMonth() + 1);
+  var d = formatNumber(date.getDate());
+  var h = formatNumber(date.getHours());
+  var minute = formatNumber(date.getMinutes());
+  var second = formatNumber(date.getSeconds());
+  return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second;//年月日时分秒
+}
+
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -14,9 +25,7 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-const mainColor = "#d74293"
-
 module.exports = {
-  formatTime: formatTime,
-  mainColor: mainColor
+  timeStampToDate:timeStampToDate,
+  formatTime:formatTime,
 }
