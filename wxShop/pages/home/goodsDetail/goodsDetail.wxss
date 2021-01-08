@@ -1,3 +1,10 @@
+.mainScrollView{
+  width:100%;
+  height:100%;
+  padding-bottom:120rpx;
+  box-sizing: border-box;
+}
+
 .sendView{
   width: 170rpx;
   height: auto;
@@ -43,4 +50,57 @@
   margin-left:20rpx;
   margin-right: 20rpx;
   font-size: 30rpx;
+}
+
+.bottomView{
+  width: 100%;
+  height: 120rpx;
+  border-bottom: 1rpx solid #F0F0F0;
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  background-color: white;
+  align-items: center;
+}
+
+.cartCountView{
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  background-color: red;
+  border-radius: 20rpx;
+  position: absolute;
+  top: 5rpx;
+  left: 80rpx;
+  font-size: 28rpx;
+  color: white;
+}
+
+.cart_count_view_none{
+  width: 0rpx;
+  height: 0rpx;
+}
+
+.addCartView{
+  width: 303rpx;
+  height: 120rpx;
+  margin-left: 40rpx;
+  background-color: #4EAE50;
+  line-height: 120rpx;
+  text-align: center;
+  color: white;
+}
+
+.popViewAddView{
+  width: 180rpx;
+  height: 50rpx;
+  margin-left: 20rpx;
+  border-radius: 10rpx;
+  line-height: 50rpx;
+  text-align: center;
+  background-color: #4EAE50;
+  font-size: 28rpx;
+  color: white;
 }

@@ -113,8 +113,9 @@ page{
 }
 
 .hotItemImg{
-  width: 375rpx;
-  height: 380rpx;
+  width: 365rpx;
+  height: 365rpx;
+  margin-left: 5rpx;
 }
 
 .hotItemTitle{

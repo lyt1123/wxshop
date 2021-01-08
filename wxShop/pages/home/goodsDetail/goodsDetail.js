@@ -5,6 +5,9 @@ import util from "../../../utils/util";
 Page({
   data: {
     goodsData:{},
+    cartGoodsCount:0,
+    bottomShow:false,
+    addGoodsCount:1,
   },
   onLoad:function(option){
     // var eventChannel = this.getOpenerEventChannel();
@@ -26,18 +29,49 @@ Page({
       res.goodComments.forEach((value,index) => {
         value.discussTime = util.timeStampToDate(value.discussTime);
       });
+      
       this.setData({
-        goodsData:res
+        goodsData:res,
+        cartGoodsCount: manager.getCartGoodsCount(),
       })
-
-      // let goodsInfo = res.goodInfo;
-      // goodsInfo.count = 1;
-      // goodsInfo.select = true;
-      // saveCartGoods(goodsInfo);
     })
   },
   
   tabsOnChange:function(event){
 
+  },
+
+  gotoCart:function(){
+    wx.switchTab({
+      url: "/pages/cart/cart",
+    });
+  },
+  
+  addCart:function(){
+    this.setData({ bottomShow: true });
+  },
+
+  mustBuy:function(){
+
+  },
+
+  onPopupClose() {
+    this.setData({ bottomShow: false });
+  },
+
+  goodsCountChange:function(event){
+    this.data.addGoodsCount = event.detail
+  },
+
+  popAddCart:function(){
+    let goods = this.data.goodsData.goodInfo;
+    goods.count = this.data.addGoodsCount;
+    goods.select = true;
+    manager.saveCartGoods(goods);
+
+    this.setData({
+       bottomShow: false,
+       cartGoodsCount: manager.getCartGoodsCount(),
+      });
   }
 })

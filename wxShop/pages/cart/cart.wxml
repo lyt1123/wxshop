@@ -1,18 +1,22 @@
-<scroll-view class="cartBgView" scroll-y="true" catchtouchmove="return">
+<scroll-view class="cartBgView" scroll-y="true" bounces="true">
   <!-- 占位 -->
   <view style="height:20rpx;border-bottom: 0.5rpx solid darkgray;background-color:white"></view>
   <!-- 商品列表 -->
-  <view class="cartItem" wx:for="{{cartList}}" wx:key="cartList" >
-    <radio style="margin-left:30rpx" color="#d74293" bindtap="selectTap" data-index="{{index}}"></radio>
-    <image class="cartItemGoodsImg" src=""></image>
+  <view class="cartItem" wx:for="{{goodsList}}" wx:key="goodsList" >
+    <radio style="margin-left:30rpx" color="#d74293" checked="{{item.select}}" bindtap="selectTap" data-index="{{index}}"></radio>
+    <view class="cartItemGoodsView">
+      <image class="cartItemGoodsImg" src="{{item.comPic}}"></image>
+    </view>
     <view class="cartItemNameView">
-      <view class="cartItemGoodsName">商品名称啊啊啊啊啊啊啊啊啊想吃V字形从v</view>
-      <view>数量数</view>
+      <view class="cartItemGoodsName">{{item.goodsName}}</view>
+      <view>
+        <van-stepper value="{{ item.count }}" integer bind:change="goodsCountChange" data-index="{{index}}"/>
+      </view>
     </view>
     <view class="cartItemPriceView">
-      <view class="cartItemGoodsPrice">￥ 299.00</view>
-      <view class="cartItemGoodsOriPrice">￥ 300.00</view>
-      <view>删除</view>
+      <view class="cartItemGoodsPrice">{{'￥' +item.presentPrice}}</view>
+      <view class="cartItemGoodsOriPrice">{{'￥' +item.oriPrice}}</view>
+      <image style="width:40rpx;height:40rpx;margin-top:10rpx" src="/image/icon_delete.png" bindtap="onDeleteTap" data-index="{{index}}"/>
     </view>
   </view>
 </scroll-view>
@@ -26,12 +30,9 @@
   </view>
   <!-- 总价 -->
   <view class="allPriceView">
-    <view class="totalPriceView" style="display:flex">
-      <view>合计：</view>
-      <view style="color:#d74293;text-align: right;">￥ 298.00</view>
-    </view>
+    <view style="color:#d74293;text-align: right;">{{'合计：￥' + totalPrice}}</view>
     <view style="font-size:20rpx;text-align: right;">满68免配送费，预购免配送费</view>
   </view>
   <!-- 结算按钮 -->
-  <view class="settleView">结算(1)</view>
+  <view class="settleView">{{'结算(' + totalCount + ')'}}</view>
 </view>

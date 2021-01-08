@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "购物车",
-  "disableScroll":true
+  "usingComponents": {
+    "van-stepper": "@vant/weapp/stepper/index"
+  }
 }

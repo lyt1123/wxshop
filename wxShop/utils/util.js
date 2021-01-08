@@ -25,7 +25,16 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+function isArrayFn(value){
+	if (typeof Array.isArray === "function") {
+		return Array.isArray(value);    
+	}else{
+		return Object.prototype.toString.call(value) === "[object Array]";    
+	}
+}
+
 module.exports = {
   timeStampToDate:timeStampToDate,
   formatTime:formatTime,
+  isArrayFn:isArrayFn,
 }

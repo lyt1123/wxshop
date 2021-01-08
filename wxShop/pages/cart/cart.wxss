@@ -8,7 +8,7 @@ page{
   height: 100%;
   padding-bottom: 130rpx;
   box-sizing: border-box;
-  background-color: f2f2f2;
+  background-color: #f2f2f2;
 }
 
 ::-webkit-scrollbar {
@@ -27,20 +27,26 @@ page{
   align-items: center;
 }
 
-.cartItemGoodsImg{
+.cartItemGoodsView{
   width: 160rpx;
   height:160rpx;
   margin-left:10rpx;
-  background-color:gray
+  border: 0.5rpx solid darkgray;
+}
+
+.cartItemGoodsImg{
+  width: 150rpx;
+  height:150rpx;
+  margin-left: 5rpx;
+  margin-top: 5rpx;
 }
 
 .cartItemNameView{
   max-width: 280rpx;
   height: 160rpx;
-  margin-left: 10rpx;
+  margin-left: 20rpx;
   display: flex;
   flex-direction: column;
-  background-color: wheat;
   justify-content: space-between;
 }
 
@@ -54,18 +60,17 @@ page{
 }
 
 .cartItemPriceView{
-  max-width: 200rpx;
+  max-width: 180rpx;
   height: 160rpx;
-  right: 10rpx;
+  right: 20rpx;
   position: absolute;
   display: flex;
   flex-direction: column;
-  background-color: turquoise;
   align-items: flex-end;
 }
 
 .cartItemGoodsPrice{
-  font-size: 28rpx;
+  font-size: 30rpx;
   color: #4c4c4c;
   display: -webkit-box;
   overflow: hidden;
@@ -76,6 +81,7 @@ page{
 }
 
 .cartItemGoodsOriPrice{
+  font-size: 28rpx;
   color: darkgray;
   text-decoration: line-through;
 }
@@ -101,7 +107,7 @@ page{
 }
 
 .allPriceView{
-  width: auto;
+  max-width: 350rpx;
   height: 130rpx;
   margin-right: 30rpx;
   margin-left: 180rpx;
@@ -112,7 +118,7 @@ page{
 }
 
 .settleView{
-  width: auto;
+  min-width: 120rpx;
   height: 100rpx;
   padding: 0 20rpx;
   margin-right: 30rpx;
