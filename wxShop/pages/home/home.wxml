@@ -2,25 +2,26 @@
   <!--广告-->
   <swiper style="height:376rpx" indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true">
     <swiper-item wx:for="{{homeData.slides}}" wx:key="image" bindtap="onSwiperTap">
-      <image class="goods_img" src="{{item.image}}" data-id="{{item.goodsId}}"></image>
+      <image style="width:100%;height:376rpx;" src="{{item.image}}" data-id="{{item.goodsId}}"/>
     </swiper-item>
   </swiper>
   <!-- 分类 -->
-  <van-grid clickable="true" column-num="4" border="{{false}}">
-    <van-grid-item use-slot wx:for="{{homeData.category}}"  wx:if="{{index< 4}}"
-      wx:key="category">
-      <image style="width: 100rpx; height: 100rpx;" src="{{item.image}}"></image>
-      <text>{{item.mallCategoryName}}</text>
+  <van-grid column-num="4" border="{{false}}">
+    <van-grid-item use-slot wx:for="{{homeData.category}}" wx:if="{{index< 4}}" wx:key="category">
+      <view class="categoryItem" data-index="{{index}}" bindtap="categoryTap">
+        <image style="width: 100rpx; height: 100rpx;" src="{{item.image}}"/>
+        <text style="margin-top:5rpx">{{item.mallCategoryName}}</text>
+      </view>
     </van-grid-item>
     <!-- <block wx:for="{{homeData.category}}"  wx:if="{{index< 4}}"
-      wx:key="category">
-      <van-grid-item  icon="{{item.image}}" text="{{item.mallCategoryName}}" />
-    </block> -->
+        wx:key="category">
+        <van-grid-item  icon="{{item.image}}" text="{{item.mallCategoryName}}" />
+      </block> -->
   </van-grid>
   <!-- 空行 -->
   <view style="height:20rpx"></view>
   <!--客服电话 -->
-  <image style="width:100%; height:70rpx" src="{{homeData.advertesPicture.PICTURE_ADDRESS}}"></image>
+  <image style="width:100%; height:70rpx" src="{{homeData.advertesPicture.PICTURE_ADDRESS}}" bindtap="couponTap"/>
   <!-- 地址 -->
   <image style="width:100%; height:240rpx" src="{{homeData.shopInfo.leaderImage}}"></image>
 
@@ -48,47 +49,47 @@
   </scroll-view>
 
   <!-- 楼层一 -->
-  <image class="floorTitleImg" src="{{homeData.floor1Pic.PICTURE_ADDRESS}}"></image>
+  <image class="floorTitleImg" src="{{homeData.floor1Pic.PICTURE_ADDRESS}}"/>
   <view class="floorBgView">
-    <image class="floorImgBig" src="{{homeData.floor1[0].image}}"></image>
+    <image class="floorImgBig" src="{{homeData.floor1[0].image}}" data-index="0" bindtap="floor1Tap"/>
     <view class="floorLeftBgView">
-      <image class="floorImgSmall" src="{{homeData.floor1[1].image}}"></image>
-      <image class="floorImgSmall" src="{{homeData.floor1[2].image}}"></image>
+      <image class="floorImgSmall" src="{{homeData.floor1[1].image}}" data-index="1" bindtap="floor1Tap"/>
+      <image class="floorImgSmall" src="{{homeData.floor1[2].image}}" data-index="2" bindtap="floor1Tap"/>
     </view>
-    <image class="floorImgSmall" src="{{homeData.floor1[3].image}}"></image>
-    <image class="floorImgSmall" src="{{homeData.floor1[4].image}}"></image>
+    <image class="floorImgSmall" src="{{homeData.floor1[3].image}}" data-index="3" bindtap="floor1Tap"/>
+    <image class="floorImgSmall" src="{{homeData.floor1[4].image}}" data-index="4" bindtap="floor1Tap"/>
   </view>
   <!-- 楼层二 -->
-  <image class="floorTitleImg" src="{{homeData.floor2Pic.PICTURE_ADDRESS}}"></image>
+  <image class="floorTitleImg" src="{{homeData.floor2Pic.PICTURE_ADDRESS}}"/>
   <view class="floorBgView">
-    <image class="floorImgBig" src="{{homeData.floor2[0].image}}"></image>
+    <image class="floorImgBig" src="{{homeData.floor2[0].image}}" data-index="0" bindtap="floor2Tap"/>
     <view class="floorLeftBgView">
-      <image class="floorImgSmall" src="{{homeData.floor2[1].image}}"></image>
-      <image class="floorImgSmall" src="{{homeData.floor2[2].image}}"></image>
+      <image class="floorImgSmall" src="{{homeData.floor2[1].image}}" data-index="1" bindtap="floor2Tap"/>
+      <image class="floorImgSmall" src="{{homeData.floor2[2].image}}" data-index="2" bindtap="floor2Tap"/>
     </view>
-    <image class="floorImgSmall" src="{{homeData.floor2[3].image}}"></image>
-    <image class="floorImgSmall" src="{{homeData.floor2[4].image}}"></image>
+    <image class="floorImgSmall" src="{{homeData.floor2[3].image}}" data-index="3" bindtap="floor2Tap"/>
+    <image class="floorImgSmall" src="{{homeData.floor2[4].image}}" data-index="4" bindtap="floor2Tap"/>
   </view>
   <!-- 楼层三 -->
-  <image class="floorTitleImg" src="{{homeData.floor3Pic.PICTURE_ADDRESS}}"></image>
+  <image class="floorTitleImg" src="{{homeData.floor3Pic.PICTURE_ADDRESS}}"/>
   <view class="floorBgView">
-    <image class="floorImgBig" src="{{homeData.floor3[0].image}}"></image>
+    <image class="floorImgBig" src="{{homeData.floor3[0].image}}" data-index="0" bindtap="floor3Tap"/>
     <view class="floorLeftBgView">
-      <image class="floorImgSmall" src="{{homeData.floor3[1].image}}"></image>
-      <image class="floorImgSmall" src="{{homeData.floor3[2].image}}"></image>
+      <image class="floorImgSmall" src="{{homeData.floor3[1].image}}" data-index="1" bindtap="floor3Tap"/>
+      <image class="floorImgSmall" src="{{homeData.floor3[2].image}}" data-index="2" bindtap="floor3Tap"/>
     </view>
-    <image class="floorImgSmall" src="{{homeData.floor3[3].image}}"></image>
-    <image class="floorImgSmall" src="{{homeData.floor3[4].image}}"></image>
+    <image class="floorImgSmall" src="{{homeData.floor3[3].image}}" data-index="3" bindtap="floor3Tap"/>
+    <image class="floorImgSmall" src="{{homeData.floor3[4].image}}" data-index="4" bindtap="floor3Tap"/>
   </view>
   <!-- 火爆title -->
   <view class="hotTitle">
-    <image style="height:30rpx;width:30rpx" src="../../image/fire.png"></image>
+    <image style="height:30rpx;width:30rpx" src="../../image/fire.png"/>
     <text>火爆专区</text>
   </view>
 
   <view class="hotContentBg">
     <view class="hotItemBg" wx:for="{{goodsArr}}" wx:key="goods" data-id="{{item.goodsId}}" bindtap="goodsClickTap">
-      <image class="hotItemImg" src="{{item.image}}"></image>
+      <image class="hotItemImg" src="{{item.image}}"/>
       <text class="hotItemTitle">{{item.name}}</text>
       <view class="hotPriceBg">
         <text class="hotItemPrice">{{'￥' +item.mallPrice}}</text>
@@ -99,7 +100,7 @@
 
   <van-overlay show="{{ show }}" bind:click="onClickHide">
     <view class="advertesView">
-      <image style="width:600rpx;height:700rpx" src="{{config_static.hover_home.url}}"></image>
+      <image style="width:600rpx;height:700rpx" src="{{config_static.hover_home.url}}"/>
     </view>
   </van-overlay>
 </view>

@@ -5,7 +5,8 @@
     "pages/cart/cart",
     "pages/mine/mine",
     "pages/home/goodsDetail/goodsDetail",
-    "pages/mine/order-detail/order-detail"
+    "pages/mine/order-detail/order-detail",
+    "pages/mine/coupon/coupon"
   ],
   "tabBar": {
     "color": "#999999",

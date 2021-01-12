@@ -16,7 +16,7 @@
       <view class="funcItemTitle">{{funcArr[0].title}}</view>
       <image class="funcItemArrow" src="/image/icon_arrowRight.png"></image>
     </view>
-    <van-grid clickable="true" column-num="4" border="{{false}}" style="width:100%;">
+    <van-grid column-num="4" border="{{false}}" style="width:100%;">
       <van-grid-item icon="/image/icon_pay.png" text="待付款" link-type="navigateTo" url="/pages/mine/order-detail/order-detail?type=1" dot />
       <van-grid-item icon="/image/icon_pay.png" text="待发货" link-type="navigateTo" url="/pages/mine/order-detail/order-detail?type=2"
         badge="9999" />

@@ -1,4 +1,6 @@
 import { promiseRequest } from '../../utils/api';
+const app = getApp();
+
 Page({
   data: {
     leftNavArr: [],
@@ -14,6 +16,13 @@ Page({
     this.requestLeftNav();
   },
 
+  onShow:function(){
+    if (app.globalData.categoryIndex != null && this.data.leftNavArr.length){
+      this.leftNavTapAction(app.globalData.categoryIndex);
+      app.globalData.categoryIndex = null;
+    }
+  },
+
   requestLeftNav: function () {
     wx.showToast({
       title: '数据加载中',
@@ -23,17 +32,24 @@ Page({
       url: 'getCategory',
     }).then(res => {
       wx.hideToast();
-      let tempArr = [{'mallSubId':'','mallSubName':'全部'}];
       this.setData({
         leftNavArr: res,
-        topNavArr: tempArr.concat(res[0].bxMallSubDto),
       })
-      this.requestNavGoods(1);
+      if (app.globalData.categoryIndex != null){
+        this.leftNavTapAction(app.globalData.categoryIndex);
+        app.globalData.categoryIndex = null;
+      }
+    }).catch(res=>{
+
     })
   },
 
   leftNavTap:function(e){
     let index = e.target.dataset.index;
+    this.leftNavTapAction(index);
+  },
+
+  leftNavTapAction:function(index){
     let tempArr = [{'mallSubId':'','mallSubName':'全部'}];
     this.setData({
       leftNavSelIndex: index,
@@ -43,6 +59,7 @@ Page({
     this.data.canLoadMoreData = true;
     this.requestNavGoods(1);
   },
+
   topNavTap:function(e){
     let index = e.target.dataset.index;
     this.setData({
@@ -98,7 +115,19 @@ Page({
 
   onPullDownRefresh:function(){
     this.requestLeftNav();
-  }
+  },
+
+  goodsItemTap:function (event) {
+    let index = event.currentTarget.dataset.index;
+    let goodsId = this.data.navGoodsArr[index].goodsId;
+    if (!goodsId) {
+      return;
+    }
+    wx.navigateTo({
+      url: '/pages/home/goodsDetail/goodsDetail?goodsId=' + goodsId,
+    })
+  },
+
 
   // getHeight: function() { 
   //   const that = this; 

@@ -34,6 +34,8 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    categoryIndex:0,
+    tips_goods_detail:{},
   }
 })

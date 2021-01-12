@@ -1,21 +1,21 @@
 import api from "../../../utils/api";
 import manager from "../../../utils/cart-manager";
 import util from "../../../utils/util";
+const app = getApp();
 
 Page({
   data: {
     goodsData:{},
     cartGoodsCount:0,
     bottomShow:false,
-    addGoodsCount:1,
-    tips_goods_detail:'',
+    tips_content:'',
   },
   onLoad:function(option){
     // var eventChannel = this.getOpenerEventChannel();
     // eventChannel.on('goodsId',function(data){
     //   console.log(data);
     // });
-    console.log(option);
+
     let goodsId = option.goodsId;
     this.requestGoodsDetail(goodsId);
   },
@@ -34,6 +34,7 @@ Page({
       this.setData({
         goodsData:res,
         cartGoodsCount: manager.getCartGoodsCount(),
+        tips_content:app.globalData.tips_goods_detail.content,
       })
     })
   },
@@ -61,12 +62,12 @@ Page({
   },
 
   goodsCountChange:function(event){
-    this.data.addGoodsCount = event.detail
+    let goods = this.data.goodsData.goodInfo;
+    goods.count = event.detail;
   },
 
   popAddCart:function(){
     let goods = this.data.goodsData.goodInfo;
-    goods.count = this.data.addGoodsCount;
     goods.select = true;
     manager.saveCartGoods(goods);
 

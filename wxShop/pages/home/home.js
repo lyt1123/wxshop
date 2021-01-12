@@ -1,4 +1,5 @@
 import api from "../../utils/api";
+const app = getApp()
 Page({
   data: {
     homeData: {},
@@ -6,7 +7,7 @@ Page({
     goodsArr: [],
     canLoadMoreData: true,
     show: false,
-    config_static:{},
+    config_static: {},
   },
   onLoad: function (options) {
     this.dataRequest();
@@ -26,8 +27,8 @@ Page({
       that.setData({
         homeData: res,
       })
-    }).catch(res=>{
-      
+    }).catch(res => {
+
     })
   },
 
@@ -59,21 +60,23 @@ Page({
       } else {
         that.data.canLoadMoreData = false;
       }
-    }).catch(res=>{
+    }).catch(res => {
+
     })
   },
 
-  requestTipData:function () {
+  requestTipData: function () {
     var that = this;
     wx.request({
       url: 'https://wxmini.baixingliangfan.cn/baixing/resources/config_static.json',
-      success:(res)=>{
+      success: (res) => {
+        app.globalData.tips_goods_detail = res.data.tips_goods_detail;
         that.setData({
           config_static: res.data,
-          show: true,   
+          show: true,
         })
       },
-      fail:(res)=>{
+      fail: (res) => {
         that.requestTipData();
       }
     })
@@ -96,6 +99,20 @@ Page({
     this.gotoGoodsDetail(id)
   },
 
+  categoryTap: function (event) {
+    let index = event.currentTarget.dataset.index;
+    app.globalData.categoryIndex = index;
+    wx.switchTab({
+      url: "/pages/category/category",
+    });
+  },
+
+  couponTap:function(){
+    wx.navigateTo({
+      url: '/pages/mine/coupon/coupon',
+    })
+  },
+
   // saomaTap: function(){
 
   // },
@@ -104,13 +121,32 @@ Page({
 
   // },
 
-  // newUserTap: function(){
-
-  // },
-
+  newUserTap: function () {
+    this.setData({
+      show: true,
+    })
+  },
 
   onRecommendTap: function (e) {
     let goodsId = e.currentTarget.dataset.id;
+    this.gotoGoodsDetail(goodsId);
+  },
+
+  floor1Tap:function(e){
+    let index = e.target.dataset.index;
+    let goodsId = this.data.homeData.floor1[index].goodsId;
+    this.gotoGoodsDetail(goodsId);
+  },
+
+  floor2Tap:function(e){
+    let index = e.target.dataset.index;
+    let goodsId = this.data.homeData.floor2[index].goodsId;
+    this.gotoGoodsDetail(goodsId);
+  },
+
+  floor3Tap:function(e){
+    let index = e.target.dataset.index;
+    let goodsId = this.data.homeData.floor3[index].goodsId;
     this.gotoGoodsDetail(goodsId);
   },
 
@@ -124,15 +160,19 @@ Page({
       return;
     }
     wx.navigateTo({
-      url: 'goodsDetail/goodsDetail?goodsId=' + goodsId + '&tips_goods_detail=' + this.data.config_static.tips_goods_detail.content,
+      url: 'goodsDetail/goodsDetail?goodsId=' + goodsId,
+
       // success:function(res){
       //   res.eventChannel.emit('goodsId',{data: goodsId});
       // }  
     })
   },
 
+  // 弹出层
   onClickHide() {
-    this.setData({ show: false });
+    this.setData({
+      show: false
+    });
   },
 
   onShareAppMessage() {
