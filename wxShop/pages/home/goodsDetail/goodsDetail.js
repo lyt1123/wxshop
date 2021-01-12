@@ -8,13 +8,14 @@ Page({
     cartGoodsCount:0,
     bottomShow:false,
     addGoodsCount:1,
+    tips_goods_detail:'',
   },
   onLoad:function(option){
     // var eventChannel = this.getOpenerEventChannel();
     // eventChannel.on('goodsId',function(data){
     //   console.log(data);
     // });
-
+    console.log(option);
     let goodsId = option.goodsId;
     this.requestGoodsDetail(goodsId);
   },

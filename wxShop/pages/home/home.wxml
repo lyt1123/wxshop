@@ -9,10 +9,13 @@
   <van-grid clickable="true" column-num="4" border="{{false}}">
     <van-grid-item use-slot wx:for="{{homeData.category}}"  wx:if="{{index< 4}}"
       wx:key="category">
-      <!-- link-type="navigateTo" url="{{item.goodsId}}"  -->
       <image style="width: 100rpx; height: 100rpx;" src="{{item.image}}"></image>
       <text>{{item.mallCategoryName}}</text>
     </van-grid-item>
+    <!-- <block wx:for="{{homeData.category}}"  wx:if="{{index< 4}}"
+      wx:key="category">
+      <van-grid-item  icon="{{item.image}}" text="{{item.mallCategoryName}}" />
+    </block> -->
   </van-grid>
   <!-- 空行 -->
   <view style="height:20rpx"></view>
@@ -93,4 +96,10 @@
       </view>
     </view>
   </view>
+
+  <van-overlay show="{{ show }}" bind:click="onClickHide">
+    <view class="advertesView">
+      <image style="width:600rpx;height:700rpx" src="{{config_static.hover_home.url}}"></image>
+    </view>
+  </van-overlay>
 </view>

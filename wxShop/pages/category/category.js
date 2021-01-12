@@ -96,6 +96,10 @@ Page({
     console.log(index);
   },
 
+  onPullDownRefresh:function(){
+    this.requestLeftNav();
+  }
+
   // getHeight: function() { 
   //   const that = this; 
   //   const windowHeight = wx.getSystemInfoSync().windowHeight

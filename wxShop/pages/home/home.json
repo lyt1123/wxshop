@@ -2,7 +2,8 @@
   "navigationBarTitleText": "首页",
   "usingComponents": {
     "van-grid": "@vant/weapp/grid/index",
-    "van-grid-item": "@vant/weapp/grid-item/index"
+    "van-grid-item": "@vant/weapp/grid-item/index",
+    "van-overlay": "@vant/weapp/overlay/index"
   },
   "enablePullDownRefresh": true,
   "onReachBottomDistance": 50

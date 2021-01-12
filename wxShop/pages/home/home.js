@@ -5,10 +5,13 @@ Page({
     currentPage: 1,
     goodsArr: [],
     canLoadMoreData: true,
+    show: false,
+    config_static:{},
   },
   onLoad: function (options) {
     this.dataRequest();
     this.goodsRequest(1);
+    this.requestTipData();
   },
 
   dataRequest: function () {
@@ -23,6 +26,8 @@ Page({
       that.setData({
         homeData: res,
       })
+    }).catch(res=>{
+      
     })
   },
 
@@ -53,6 +58,23 @@ Page({
         })
       } else {
         that.data.canLoadMoreData = false;
+      }
+    }).catch(res=>{
+    })
+  },
+
+  requestTipData:function () {
+    var that = this;
+    wx.request({
+      url: 'https://wxmini.baixingliangfan.cn/baixing/resources/config_static.json',
+      success:(res)=>{
+        that.setData({
+          config_static: res.data,
+          show: true,   
+        })
+      },
+      fail:(res)=>{
+        that.requestTipData();
       }
     })
   },
@@ -102,11 +124,15 @@ Page({
       return;
     }
     wx.navigateTo({
-      url: 'goodsDetail/goodsDetail?goodsId=' + goodsId,
+      url: 'goodsDetail/goodsDetail?goodsId=' + goodsId + '&tips_goods_detail=' + this.data.config_static.tips_goods_detail.content,
       // success:function(res){
       //   res.eventChannel.emit('goodsId',{data: goodsId});
       // }  
     })
+  },
+
+  onClickHide() {
+    this.setData({ show: false });
   },
 
   onShareAppMessage() {

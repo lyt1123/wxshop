@@ -129,6 +129,13 @@ page{
   color: white;
 }
 
+.emptyView{
+  width: 100%;
+  height: 100rpx;
+  margin-top: 200rpx;
+  line-height: 100rpx;
+  text-align: center;
+}
 
 
 

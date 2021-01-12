@@ -4,7 +4,8 @@
     "pages/category/category",
     "pages/cart/cart",
     "pages/mine/mine",
-    "pages/home/goodsDetail/goodsDetail"
+    "pages/home/goodsDetail/goodsDetail",
+    "pages/mine/order-detail/order-detail"
   ],
   "tabBar": {
     "color": "#999999",

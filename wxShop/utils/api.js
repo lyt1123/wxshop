@@ -16,22 +16,23 @@ function promiseRequest(params) {
           resolve(responds.data);
         }else{
           wx.stopPullDownRefresh();
-          console.log(res.errMsg);
+          console.log('业务失败' + res.errMsg);
           wx.showToast({
             title: res.errMsg?res.errMsg:'网络请求失败，稍后再试!',
             icon: 'none',
             duration: 2000
-          })
+          });
+          reject(res);
         }
       },
       fail: res => {
         wx.stopPullDownRefresh();
-        console.log(res.errMsg);
+        console.log('网络失败：' + res.errMsg);
         wx.showToast({
           title: res.errMsg?res.errMsg:'网络请求失败，稍后再试!',
           icon:'none',
           duration: 2000
-        })
+        });
       }
     })
   })

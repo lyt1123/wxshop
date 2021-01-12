@@ -4,36 +4,74 @@ page{
 }
 
 .container{
-  height: 100%;
+  width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
 }
 
-.loginBtn{
-  width: auto;
-  height: 80rpx;
-  line-height: 80rpx;
-  border:1rpx solid black;
-  font-size: 28rpx;
+.headBgView{
+  width: 100%;
+  height: 400rpx;
 }
 
 .userinfo {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: absolute;
+  top: 110rpx;
 }
 
 .userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
+  width: 160rpx;
+  height: 160rpx;
   margin: 20rpx;
   border-radius: 50%;
+  border: 6rpx solid white;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.loginBtn{
+  width: auto;
+  height: 60rpx;
+  line-height: 60rpx;
+  border:1rpx solid black;
+  font-size: 28rpx;
+  background: rgba(0, 0, 0, 0);
+}
+
+.funcItem{
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid lightgray;
+  background-color: white
+}
+
+.funcItemImg{
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 20rpx;
+}
+
+.funcItemTitle{
+  margin-left: 20rpx;
+  color: #1B1B1B;
+  font-size: 30rpx;
+}
+
+.funcItemArrow{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  top: 25;
+  right: 20rpx;
+}
+
+.orderView{
+  width: 100%;
+  height: 160rpx;
+  background-color: white;
 }

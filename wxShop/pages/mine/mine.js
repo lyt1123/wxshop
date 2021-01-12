@@ -4,16 +4,44 @@ Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    funcArr: [{
+      "icon": "/image/icon_order.png",
+      "title": "我的订单"
+    },
+    {
+      "icon": "/image/icon_quan.png",
+      "title": "领取优惠券"
+    }, {
+      "icon": "/image/icon_quan.png",
+      "title": "已领取优惠券"
+    }, {
+      "icon": "/image/icon_dizhi.png",
+      "title": "地址管理"
+    }, {
+      "icon": "/image/icon_about.png",
+      "title": "关于商城"
+    }, {
+      "icon": "/image/icon_qrcode.png",
+      "title": "扫码进行投诉"
+    }],
   },
 
   onLoad: function (options) {
+    this.checkUserInfo();
+  },
+
+  funcItemTap:function (event) {
+    console.log(event);
+  },
+
+  checkUserInfo:function () {
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-    } else if (this.data.canIUse){
+    } else if (this.data.canIUse) {
       app.userInfoReadyCallback = res => {
         this.setData({
           userInfo: res.userInfo,
@@ -33,7 +61,7 @@ Page({
     }
   },
 
-  getUserInfo: function(e) {
+  getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({

@@ -1,9 +1,44 @@
 <view class="container"> 
+  <image class="headBgView" src="/image/headBgImg.jpg"></image>
   <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="loginBtn" > 登录/注册 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <block wx:if="{{!hasUserInfo && canIUse}}">
+        <image class="userinfo-avatar" style="background-color:darkgray;"></image>
+        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="loginBtn"> 登录/注册 </button>
+      </block>
+      <block wx:else>
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <text>{{userInfo.nickName}}</text>
+      </block>
+    </view>
+    <!-- 订单 -->
+    <view class="funcItem" style="margin-top:20rpx" data-index="0" bindtap="funcItemTap">
+      <image class="funcItemImg" src="{{funcArr[0].icon}}"></image>
+      <view class="funcItemTitle">{{funcArr[0].title}}</view>
+      <image class="funcItemArrow" src="/image/icon_arrowRight.png"></image>
+    </view>
+    <van-grid clickable="true" column-num="4" border="{{false}}" style="width:100%;">
+      <van-grid-item icon="/image/icon_pay.png" text="待付款" link-type="navigateTo" url="/pages/mine/order-detail/order-detail?type=1" dot />
+      <van-grid-item icon="/image/icon_pay.png" text="待发货" link-type="navigateTo" url="/pages/mine/order-detail/order-detail?type=2"
+        badge="9999" />
+      <van-grid-item icon="/image/icon_pay.png" text="待收货" link-type="navigateTo" url="/pages/mine/order-detail/order-detail?type=3"
+        badge="1" />
+      <van-grid-item icon="/image/icon_pay.png" text="待评价" link-type="navigateTo" url="/pages/mine/order-detail/order-detail?type=4"
+        badge="9" />
+    </van-grid>
+    <view style="margin-top:20rpx"></view>
+    <block wx:for="{{funcArr}}" wx:key="funcArr" data-index="{{index}}" wx:if="{{index>0&&index<4}}">
+      <view class="funcItem" data-index="{{index}}" bindtap="funcItemTap">
+        <image class="funcItemImg" src="{{funcArr[index].icon}}"></image>
+        <view class="funcItemTitle">{{funcArr[index].title}}</view>
+        <image class="funcItemArrow" src="/image/icon_arrowRight.png"></image>
+      </view>
     </block>
-  </view>
+    <view style="margin-top:20rpx"></view>
+    <block wx:for="{{funcArr}}" wx:key="funcArr" data-index="{{index}}" wx:if="{{index>3}}">
+      <view class="funcItem" data-index="{{index}}" bindtap="funcItemTap">
+        <image class="funcItemImg" src="{{funcArr[index].icon}}"></image>
+        <view class="funcItemTitle">{{funcArr[index].title}}</view>
+        <image class="funcItemArrow" src="/image/icon_arrowRight.png"></image>
+      </view>
+    </block>
 </view>
