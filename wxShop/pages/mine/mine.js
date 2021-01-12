@@ -32,7 +32,17 @@ Page({
   },
 
   funcItemTap:function (event) {
-    console.log(event);
+    let index = event.target.dataset.index
+    if (index == 1)
+    {
+      wx.navigateTo({
+        url: 'coupon/coupon',
+      })
+    }else if (index == 4){
+      wx.navigateTo({
+        url: 'about/about',
+      })
+    }
   },
 
   checkUserInfo:function () {

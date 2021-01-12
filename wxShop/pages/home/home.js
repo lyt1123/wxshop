@@ -3,7 +3,7 @@ const app = getApp()
 Page({
   data: {
     homeData: {},
-    currentPage: 1,
+    currentPage: 0,
     goodsArr: [],
     canLoadMoreData: true,
     show: false,

@@ -6,7 +6,8 @@
     "pages/mine/mine",
     "pages/home/goodsDetail/goodsDetail",
     "pages/mine/order-detail/order-detail",
-    "pages/mine/coupon/coupon"
+    "pages/mine/coupon/coupon",
+    "pages/mine/about/about"
   ],
   "tabBar": {
     "color": "#999999",

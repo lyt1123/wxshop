@@ -1,2 +1,3 @@
-<!--pages/mine/coupon/coupon.wxml-->
-<text>pages/mine/coupon/coupon.wxml</text>
+<scroll-view class="container" scroll-y="true">
+  <image class="width:100%;height:300rpx" src="{{couponTopDic.PICTURE_ADDRESS}}"></image>
+</scroll-view>

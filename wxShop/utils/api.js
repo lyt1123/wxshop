@@ -33,7 +33,6 @@ function promiseRequest(params) {
           icon:'none',
           duration: 2000
         });
-        reject(res);
       }
     })
   })

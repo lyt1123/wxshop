@@ -1,11 +1,38 @@
-// pages/mine/coupon/coupon.js
+import api from "../../../utils/api"
+
 Page({
   data: {
-
+    couponTopDic:{},
+    couponList:[],
   },
   onLoad: function (options) {
-    // https://wxmini.baixingliangfan.cn/baixing/wxmini/fujiCouponsPic
-    // https://wxmini.baixingliangfan.cn/baixing/wxmini/fujiCouponsGetByself
+    this.requestCouponPic();
+    this.requestCouponList();
   },
 
+  requestCouponPic:function(){
+    api.promiseRequest({
+      url: "fujiCouponsPic",
+    }).then(res=>{
+      this.setData({
+        couponTopDic:res,
+      })
+    }) 
+  },
+
+  requestCouponList:function(){
+    api.promiseRequest({
+      url: "fujiCouponsGetByself",
+        data: {
+          "userId": "",
+          "scene": "",
+          "page": 1,
+          "qrcode": "0"
+        }
+    }).then(res=>{
+      this.setData({
+        couponList:res,
+      })
+    })
+  },
 })
