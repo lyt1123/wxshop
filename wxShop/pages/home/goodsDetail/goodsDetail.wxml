@@ -26,7 +26,7 @@
           <view class="commonItemText" style="color:#464646">{{item.comments}}</view>
           <view class="commonItemText" style="color:#999999;margin-bottom:10rpx">{{item.discussTime}}</view> 
         </view>
-        <image style="width:100%;height:1000rpx;" src="{{goodsData.advertesPicture.PICTURE_ADDRESS}}"></image>
+        <image style="width:100%;" mode="widthFix" src="{{goodsData.advertesPicture.PICTURE_ADDRESS}}"></image>
       </view>
     </van-tab>
   </van-tabs>

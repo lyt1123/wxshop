@@ -1,3 +1,4 @@
 <scroll-view class="container" scroll-y="true">
-  <image class="width:100%;height:300rpx" src="{{couponTopDic.PICTURE_ADDRESS}}"></image>
+  <image style="width:100%;" src="{{couponTopDic.PICTURE_ADDRESS}}" mode="widthFix"></image>
+  <view>使用优惠券</view>
 </scroll-view>
