@@ -80,9 +80,6 @@ Page({
       title: '数据加载中',
       icon: "loading",
     })
-    if (page == 1){
-      this.data.navGoodsArr = [];
-    }
     let categoryId = this.data.leftNavArr[this.data.leftNavSelIndex].mallCategoryId;
     let categorySubId = this.data.topNavArr[this.data.topNavSelIndex].mallSubId;
     promiseRequest({
@@ -94,14 +91,21 @@ Page({
       }
     }).then(res => {
       wx.hideToast();
-      if (res != null && res.length > 0) {
-        this.setData({
-          currentPage: page,
-          navGoodsArr: this.data.navGoodsArr.concat(res),
-        })
+      let tempArr = res;
+      if (page == 1){
+        this.data.navGoodsArr = tempArr;
       }else{
-        this.data.canLoadMoreData = false;
+        if (tempArr != null && tempArr.length > 0) {
+          this.data.navGoodsArr.concat(tempArr);
+        }else{
+          this.data.canLoadMoreData = false;
+        }
       }
+
+      this.setData({
+        currentPage: page,
+        navGoodsArr: tempArr,
+      })
     })
   },
   bindscrolltolower:function(){

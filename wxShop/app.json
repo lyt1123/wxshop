@@ -1,13 +1,15 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/home/home",
+    "pages/home/goodsDetail/goodsDetail",
     "pages/category/category",
     "pages/cart/cart",
     "pages/mine/mine",
-    "pages/home/goodsDetail/goodsDetail",
     "pages/mine/order-detail/order-detail",
     "pages/mine/coupon/coupon",
-    "pages/mine/about/about"
+    "pages/mine/about/about",
+    "pages/mine/location/location"
   ],
   "tabBar": {
     "color": "#999999",

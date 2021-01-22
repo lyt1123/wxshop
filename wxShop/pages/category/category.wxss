@@ -78,6 +78,14 @@ page{
   flex-flow: row wrap;
 }
 
+.goodsContentNoDataView{
+  width: 570rpx;
+  height: 100rpx;
+  margin-top: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+}
+
 .goodsItem{
   padding: 20rpx 10rpx;
   width: 265rpx;

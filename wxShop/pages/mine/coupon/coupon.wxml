@@ -1,4 +1,7 @@
 <scroll-view class="container" scroll-y="true">
   <image style="width:100%;" src="{{couponTopDic.PICTURE_ADDRESS}}" mode="widthFix"></image>
-  <view>使用优惠券</view>
+  <view class="userCouponView">使用优惠券</view>
+  <view class="couponListView">
+    <view class="couponItemView" wx:for="{{ couponList }}" wx:key="couponList" data-index="{{index}}" bindtap="onItemTap"></view>
+  </view>
 </scroll-view>

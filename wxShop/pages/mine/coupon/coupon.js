@@ -3,11 +3,11 @@ import api from "../../../utils/api"
 Page({
   data: {
     couponTopDic:{},
-    couponList:[],
+    couponList:["","","",""],
   },
   onLoad: function (options) {
     this.requestCouponPic();
-    this.requestCouponList();
+    // this.requestCouponList();
   },
 
   requestCouponPic:function(){

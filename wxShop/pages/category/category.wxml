@@ -5,7 +5,6 @@
       {{item.mallCategoryName}}</view>
   </block>
 </scroll-view>
-
 <!-- 小导航 -->
 <scroll-view class="topNavigatorView" scroll-x="true">
   <block wx:for="{{topNavArr}}" wx:key="topNavArr">
@@ -13,20 +12,18 @@
       bindtap="topNavTap">{{item.mallSubName}}</view>
   </block>
 </scroll-view>
-
 <!-- 分类商品 -->
 <scroll-view class="goodsScrollView" scroll-y="true" bindscrolltolower="bindscrolltolower">
-  <view style="height:100rpx"></view>
-  <view class="goodsContentView">
-    <block wx:for="{{navGoodsArr}}" wx:key="navGoodsArr">
-      <view class="goodsItem" data-index="{{index}}" bindtap="goodsItemTap">
-        <image class="goodsItemImg" src="{{item.image}}"></image>
-        <view class="goodsItemName">{{item.goodsName}}</view>
-        <view class="goodsPriceView">
-          <view class="goodsItemPrice">{{"￥" +item.presentPrice}}</view>
-          <view class="goodsItemOriPrice">{{"￥" +item.oriPrice}}</view>
-        </view>
+  <view style="height:100rpx" />
+  <view class="goodsContentView" wx:if="{{navGoodsArr.length}}">
+    <view class="goodsItem" wx:for="{{navGoodsArr}}" wx:key="navGoodsArr" data-index="{{index}}" bindtap="goodsItemTap">
+      <image class="goodsItemImg" src="{{item.image}}"></image>
+      <view class="goodsItemName">{{item.goodsName}}</view>
+      <view class="goodsPriceView">
+        <view class="goodsItemPrice">{{"￥" +item.presentPrice}}</view>
+        <view class="goodsItemOriPrice">{{"￥" +item.oriPrice}}</view>
       </view>
-    </block>
+    </view>
   </view>
+  <view class="goodsContentNoDataView" wx:else>暂时没有商品!!!</view>
 </scroll-view>

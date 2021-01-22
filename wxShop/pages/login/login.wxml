@@ -1,0 +1,5 @@
+
+<!-- <view bindtap="login">登录</view> -->
+<view class="container">
+  <text class="view1">1234</text>
+</view>
